@@ -5,6 +5,11 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+if (!process.env.MONGO_URI) {
+  console.error('FATAL ERROR: MONGO_URI is not defined in environment variables!');
+  process.exit(1);
+}
+
 const app = express();
 app.use(cors());
 app.use(express.json());
